@@ -1,5 +1,6 @@
 // path module help to find the path
 import path from "path";
+import Link from "next/link";
 
 // here the fs indicate the file server the data load on the server not on browser
 import fs from "fs/promises";
@@ -9,10 +10,13 @@ export default function HomePage(props) {
   const { products } = props;
   return (
     <div>
-      <h1>hello world</h1>
       <ul>
         {products.map((product) => {
-          return <li key={product.id}>{product.title}</li>;
+          return (
+            <li key={product.id}>
+              <Link href={`/${product.id}`}>{product.title}</Link>
+            </li>
+          );
         })}
       </ul>
     </div>
